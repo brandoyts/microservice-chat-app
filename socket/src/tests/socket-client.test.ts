@@ -1,7 +1,7 @@
 import SocketClient from '../lib/socket-client'
 import { describe, beforeEach, jest, test, afterEach, expect } from '@jest/globals'
 import { createServer, Server } from 'http'
-import * as express from 'express'
+import express, { Express } from 'express'
 
 // mock the express function
 jest.mock('express', () => {
@@ -23,7 +23,7 @@ jest.mock('http', () => ({
 }))
 
 describe('SocketClient', () => {
-  let app: express.Express
+  let app: Express
   let server: Server
   let socketClient: SocketClient
 

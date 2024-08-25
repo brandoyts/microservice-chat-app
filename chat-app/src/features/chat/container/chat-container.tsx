@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import Sidebar from "../components/sidebar";
 import Messages from "../components/messages";
+import useChatSocket from "@/shared/hooks/use-chat-socket";
 
 function ChatContainer() {
   return (

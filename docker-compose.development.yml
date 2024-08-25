@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  socket:
+    container_name: socket-server
+    build:
+      context: ./socket
+      dockerfile: Dockerfile.development
+      target: builder
+    volumes:
+      - ./socket/:/usr/src/app
+      - /usr/src/node_modules
+    ports:
+      - 6060:6060
+    command: npm run dev
+
+  chat-app:
+    container_name: chat-app
+    build:
+      context: ./chat-app
+      dockerfile: Dockerfile.development
+    volumes:
+      - ./chat-app/:/usr/src/app
+      - /usrsrc/app/node_modules
+    ports:
+      - 3000:3000
