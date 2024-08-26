@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
+import { SendMessage } from './lib/types'
 
 dotenv.config()
 
@@ -25,7 +26,13 @@ io.on('connection', (socket) => {
     console.log('a user disconnected')
   })
 
-  socket.on('send_message', (message) => {
+  socket.on('typing', () => {
+    socket.emit('typing', 'test')
+    console.log('typing')
+  })
+
+  socket.on('send_message', (message: SendMessage) => {
+    socket.to(message.to).emit('receive_private_message')
     console.log(message)
   })
 })

@@ -23,7 +23,9 @@ export default function RootLayout({
       <body
         className={cn("min-h-screen  font-sans antialiased", fontSans.variable)}
       >
-        {children}
+        <main className="flex flex-col items-center p-24 h-screen">
+          {children}
+        </main>
       </body>
     </html>
   );
